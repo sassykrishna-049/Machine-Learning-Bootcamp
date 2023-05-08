@@ -1,27 +1,26 @@
-from setuptools import find_packages,setup
+from setuptools import setup, find_packages
 from typing import List
 
+HYPEN_E_DOT='-e .'
 
 
-
-HYPHEN_E_DOT = "-e ."
-
-def get_requirement(file_path:str)->List[str]:
-    requirement = []
+def get_requiremet(file_path:str)->List[str]:
+    requirements = []
     with open(file_path) as f:
-        requirement = f.readlines()
-        requirement = [req.replace("\n","")for req in requirement]
+        requirements=f.readlines()
+        requirements=[req.replace("\n","")for req in requirements]
+        
+        if HYPEN_E_DOT in requirements:
+            requirements.remove(HYPEN_E_DOT)
+        
+    return requirements
 
 
-        if HYPHEN_E_DOT in requirement:
-            requirement.remove(HYPHEN_E_DOT)
-        return requirement
-    
 setup(
-    name = "src",
-    version = "0.0.1",
-    author = "Krishna Sahoo",
-    author_email= "sahookrishna2@gmail.com",
-    packages= find_packages()
-    install_requires = get_requirement("requirements.txt")
+    name="src",
+    version="0.0.1",
+    author="Krishna",
+    author_email="sahookrishna2@gmail.com",
+    install_requires=get_requiremet("requirements.txt"),
+    packages=find_packages()
 )

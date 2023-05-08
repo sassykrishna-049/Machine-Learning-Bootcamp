@@ -4,5 +4,7 @@ Flask
 urlib
 seaborn
 BeautifulSoup
+matplotlib
+ipykernel
 
- -e .
+ #-e .
